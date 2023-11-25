@@ -133,27 +133,28 @@ function App() {
                         setModalInfo(false);
                     }}
                 />
-            </div>
-
-            <div
-                className={`
-                    absolute
-                    inset-0
-                    justify-center
-                    items-center
-                    bg-[rgba(0,0,0,0.5)]
+                <div
+                    className={`
+                absolute
+                inset-0
+                min-h-full
+                justify-center
+                items-center
+                bg-[rgba(0,0,0,0.5)]
+                p-5
                     ${modalTitle === '' ? 'hidden' : 'flex'}
                 `}
-            >
-                <div className='flex flex-col gap-5 items-center bg-white rounded p-10 '>
-                    <div className='font-bold text-lg'>{modalTitle}</div>
-                    <button
-                        type='button'
-                        className={`cursor-pointer flex px-5 py-3 rounded text-white bg-amber-800 select-none`}
-                        onClick={() => window.location.reload()}
-                    >
-                        Сыграть заново
-                    </button>
+                >
+                    <div className='flex flex-col gap-5 items-center bg-white rounded p-10 '>
+                        <div className='font-bold text-lg'>{modalTitle}</div>
+                        <button
+                            type='button'
+                            className={`cursor-pointer flex px-5 py-3 rounded text-white bg-amber-800 select-none`}
+                            onClick={() => window.location.reload()}
+                        >
+                            Сыграть заново
+                        </button>
+                    </div>
                 </div>
             </div>
         </>

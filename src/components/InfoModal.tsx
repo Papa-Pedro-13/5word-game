@@ -16,11 +16,11 @@ export const InfoModal: React.FC<InfoModalProps> = ({
         justify-center
         items-center
         bg-[rgba(0,0,0,0.5)]
-        px-10
+        p-5
         ${!isShow ? 'hidden' : 'flex'}
     `}
         >
-            <div className='flex flex-col gap-5 items-center bg-white rounded p-10 py-5 '>
+            <div className='flex flex-col gap-4 items-center bg-white rounded p-3 py-5 '>
                 <div className='font-bold text-xl'>Как играть?</div>
                 <div className='flex flex-col gap-2'>
                     <div className='text-lg w-full'>

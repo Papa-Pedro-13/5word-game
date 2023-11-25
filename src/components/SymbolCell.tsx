@@ -20,9 +20,9 @@ export const SymbolCell: React.FC<SymbolCellProps> = ({
             border-2
             w-12
             h-12
-            border-white
-            text-white
-            ${symbolState === 1 ? 'opacity-75' : ''}
+            
+            ${symbolState === 0 ? 'border-white text-white' : ''}
+            ${symbolState === 1 ? 'border-white text-white opacity-75' : ''}
             ${symbolState === 2 ? 'border-yellow-400 text-yellow-400	' : ''}
             ${symbolState === 3 ? 'border-green-700 text-green-700' : ''}
             `}
