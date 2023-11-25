@@ -3,10 +3,12 @@ import { KeyboardCell } from './KeyboardCell';
 interface KeyboardProps {
     handleAddSymbol: (symbol: string) => void;
     handleDeleteSymbol: () => void;
+    checkedSymbols: string[];
 }
 export const Keyboard: React.FC<KeyboardProps> = ({
     handleAddSymbol,
     handleDeleteSymbol,
+    checkedSymbols,
 }) => {
     const abc = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя';
     return (
@@ -14,6 +16,7 @@ export const Keyboard: React.FC<KeyboardProps> = ({
             {abc.split('').map((item) => (
                 <KeyboardCell
                     key={item}
+                    checked={checkedSymbols.includes(item)}
                     symbol={item}
                     handleAddSymbol={handleAddSymbol}
                 />

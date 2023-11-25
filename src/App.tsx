@@ -2,12 +2,16 @@ import { useEffect, useState } from 'react';
 import { StringField } from './components/StringField';
 import { words } from './data';
 import { Keyboard } from './components/Keyboard';
+import { BsQuestionLg } from 'react-icons/bs';
+import { InfoModal } from './components/InfoModal';
 
 function App() {
     const [currentSymbol, setCurrentSymbol] = useState(0);
     const [currentRow, setCurrentRow] = useState(0);
     const [secretWord, setSecretWord] = useState(0);
+    const [checkedSymbols, setCheckedSymbols] = useState<string[]>([]);
     const [modalTitle, setModalTitle] = useState('');
+    const [modalInfo, setModalInfo] = useState(false);
     const [stringArr, setStringArr] = useState<string[]>([
         '     ',
         '     ',
@@ -18,6 +22,7 @@ function App() {
     useEffect(() => {
         setSecretWord(Math.floor(Math.random() * words.length));
         // setSecretWord(1937);
+        setCheckedSymbols([]);
         setStringArr(['     ', '     ', '     ', '     ', '     ']);
         setCurrentRow(0);
         setCurrentSymbol(0);
@@ -78,13 +83,24 @@ function App() {
             );
             return;
         }
+        for (let i = 0; i < stringArr[currentRow].length; i++) {
+            if (checkedSymbols.includes(stringArr[currentRow][i])) continue;
+            setCheckedSymbols((prev) => [...prev, stringArr[currentRow][i]]);
+        }
         setCurrentRow(currentRow + 1);
         setCurrentSymbol(0);
     };
 
     return (
         <>
-            <div className='bg-gray-600 min-h-[100vh] flex flex-col gap-4 items-center justify-center'>
+            <div className='bg-gray-600 min-h-[100vh] flex flex-col gap-4 items-center justify-center py-24 relative'>
+                <div className='absolute top-10 right-10 rounded-full border-[3px] border-white p-1.5 cursor-pointer hover:opacity-50'>
+                    <BsQuestionLg
+                        color={'white'}
+                        size={30}
+                        onClick={() => setModalInfo(true)}
+                    />
+                </div>
                 <h1 className='font-bold text-white text-3xl mb-10'>
                     Игра «5 букв»
                 </h1>
@@ -100,7 +116,7 @@ function App() {
                 </div>
                 <button
                     type='button'
-                    className={`cursor-pointer flex px-5 py-3 rounded text-white bg-amber-800 select-none disabled:opacity-75`}
+                    className={`cursor-pointer flex px-5 py-3 rounded text-white bg-green-500 select-none disabled:opacity-50`}
                     onClick={() => checkWord()}
                     disabled={currentSymbol !== 5}
                 >
@@ -109,8 +125,16 @@ function App() {
                 <Keyboard
                     handleAddSymbol={handleAddSymbol}
                     handleDeleteSymbol={handleDeleteSymbol}
+                    checkedSymbols={checkedSymbols}
+                />
+                <InfoModal
+                    isShow={modalInfo}
+                    handleClose={function () {
+                        setModalInfo(false);
+                    }}
                 />
             </div>
+
             <div
                 className={`
                     absolute
