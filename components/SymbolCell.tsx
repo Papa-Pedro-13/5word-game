@@ -15,9 +15,9 @@ export const SymbolCell: React.FC<SymbolCellProps> = ({
             flex 
             items-center
             justify-center
-            text-3x1
-            font-bold
-            uppercase
+           
+            
+           
             rounded
             border-2
             w-13
@@ -29,7 +29,10 @@ export const SymbolCell: React.FC<SymbolCellProps> = ({
             ${symbolState === 3 ? 'border-green-700 text-green-700' : ''}
             `}
         >
-            <Text>{symbol}</Text>
+            <Text style={tw` text-3xl font-bold  uppercase  ${symbolState === 0 ? 'text-white' : ''}
+            ${symbolState === 1 ? 'text-white opacity-75' : ''}
+            ${symbolState === 2 ? ' text-yellow-400	' : ''}
+            ${symbolState === 3 ? ' text-green-700' : ''}`}>{symbol}</Text>
         </View>
     );
 };

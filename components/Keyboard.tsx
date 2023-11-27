@@ -14,7 +14,7 @@ export const Keyboard: React.FC<KeyboardProps> = ({
 }) => {
     const abc = 'абвгдеёжзийклмнопрстуфхцчшщъыьэюя';
     return (
-        <View style={tw`flex-row px-10 gap-1`}>
+        <View style={tw`flex flex-wrap flex-row px-10 gap-1 mb-3`}>
             {abc.split('').map((item) => (
                 <KeyboardCell
                     key={item}
@@ -25,7 +25,7 @@ export const Keyboard: React.FC<KeyboardProps> = ({
             ))}
             <TouchableOpacity
                 onPress={() => handleDeleteSymbol()}
-                style={tw`flex items-center justify-center text-lg font-medium uppercase rounded border-2 h-8 border-red-600`}
+                style={tw`flex items-center justify-center text-lg font-medium uppercase rounded border px-2.5 h-9 border-red-600`}
             >
                 <Text style={tw`text-red-600`}>Удалить</Text>
             </TouchableOpacity>

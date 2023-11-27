@@ -1,6 +1,6 @@
 import React from 'react';
 import { SymbolCell } from './SymbolCell';
-import { Text } from 'react-native'
+import { Text,View } from 'react-native'
 import tw from 'twrnc';
 interface StringFieldProps {
     word: string[];
@@ -30,5 +30,5 @@ export const StringField: React.FC<StringFieldProps> = ({
             <SymbolCell key={id++} symbol={symbol} symbolState={symbolState} />
         )
     })
-    return <Text style={tw`flex gap-1`}>{content}</Text>
+    return <View style={tw`flex flex-row gap-1`}>{content}</View>
 };

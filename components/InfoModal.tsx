@@ -13,29 +13,33 @@ export const InfoModal: React.FC<InfoModalProps> = ({
         <View
         style={tw`
             absolute
-            inset-0
+            left-0
+            top-0
+            bottom-0
+            right-0
             min-h-full
             justify-center
             items-center
             bg-[rgba(0,0,0,0.5)]
             p-5
+            px-2.5
             ${!isShow ? 'hidden' : 'flex'}
         `}>
-            <View style={tw`flex flex-col gap-4 items-center bg-white rounded p-3 py-5 `}>
+            <View style={tw`flex flex-col gap-4 items-center bg-white rounded px-3 py-5 `}>
                 <Text style={tw`font-bold text-xl`}>Как играть?</Text>
                 <View style={tw`flex flex-col gap-2`}>
-                    <Text style={tw`text-lg w-full`}>
+                    <Text style={tw`text-base`}>
                         Цель игры угадать загаданное слово.{"\n"}
                         Для этого игрок:{"\n"}
                         Вводит 5-ти буквенное слово из русского языка{"\n"}
                         Нажимает кнопку "Проверить слово"
                     </Text>
-                    <Text style={tw`text-lg`}>
+                    <Text style={tw`text-base`}>
                         После этого буквы введенного слова окрашиваются по
                         правилу:
                     </Text>
-                    <View style={tw`flex flex-wrap justify-center gap-[12px]`}>
-                        <View style={tw`flex flex-col gap-1.5 items-center max-w-[150px]`}>
+                    <View style={tw`flex flex-row flex-wrap justify-center items-center w-full  gap-[12px]`}>
+                        <View style={tw`flex flex-col gap-1.5 justify-center items-center max-w-[150px]`}>
                             <View
                                 style={tw`
                                     flex 
@@ -95,7 +99,7 @@ export const InfoModal: React.FC<InfoModalProps> = ({
                             </Text>
                         </View>
                     </View>
-                    <Text style={tw`text-lg`}>
+                    <Text style={tw`text-base`}>
                         Игрок выиграл если успел отгадать слово за 5 попыток.{"\n"}
                         В противном случае он проиграл.
                     </Text>
